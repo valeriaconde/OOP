@@ -40,6 +40,25 @@
 #include "Itinerario.h"
 using namespace std;
 
+void getData(vector<Vuelo> arr, int &arrivalsTotales, int &salidasTotales) {
+    
+}
+
+// horasMayorSaturacion
+// recibe un arreglo de Vuelos e imprime la hora de cada dia con mayor saturacion
+// contar vuelos por hora,
+void horasMayorSaturacion(vector<Vuelo> arr) {
+    
+    // lee el arreglo y sacar los datos necesarios
+    for (int i = 0; i < arr.size(); i++) {
+        
+        
+    }
+    
+    // cout << "DIA " << X << "\n Hora con mayor saturacion: " << Y << endl;
+}
+
+
 int main() {
     
     ifstream datos, capacidades;
@@ -48,6 +67,8 @@ int main() {
     int pasajer, capacida;
     vector<Avion> arrAviones;
     vector<Vuelo> arrVuelos;
+    int arrivalsTotales, salidasTotales;
+    
 
     // abre archivos
     datos.open("datos_vuelos.txt");
@@ -74,14 +95,50 @@ int main() {
         arrVuelos.push_back(unVuelo);
     }
     
-    
-    
-    
     // menu
     do {
+        cout << "Que desea ver" << endl;
+        cout << "1. Hora de cada dia con mayor saturacion" << endl;
+        cout << "2. Cantidad de llegadas promedio por hora" << endl;
+        cout << "3. Cantidad de salidas promedio por hora" << endl;
+        cout << "4. Cantidad de llegadas y salidas por aerolinea" << endl;
+        cout << "5. Cantidad de pasajeros atendidos por dia" << endl;
+        cout << "6. Porcentaje promedio de capacidad usada en los aviones" << endl;
+        cout << "7. " << endl;
+        cout << "0. SALIR" << endl;
+        cout << endl;
+
+        cin >> resp;
         
-        
-        
+        switch (resp) {
+            case '1':
+                break;
+                
+            case '2':
+                break;
+                
+            case '3':
+                break;
+                
+            case '4':
+                break;
+                
+            case '5':
+                break;
+                
+            case '6':
+                break;
+                
+            case '7':
+                break;
+                
+            case '0':
+                break;
+                
+            default:
+                cout << "Opcion invalida" << endl;
+                break;
+        }
         
     } while (resp != '0');
 
