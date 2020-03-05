@@ -6,9 +6,10 @@
 //  Copyright © 2020 Valeria Conde. All rights reserved.
 //
 
+#include "Avion.h"
+#include "Itinerario.h"
 #ifndef Vuelo_h
 #define Vuelo_h
-
 using namespace std;
 
 class Vuelo {
@@ -42,7 +43,7 @@ public:
         return avion;
     }
     
-    string aerolinea() {
+    string getAerolinea() {
         return aerolinea;
     }
     

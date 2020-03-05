@@ -8,7 +8,6 @@
 
 #ifndef Avion_h
 #define Avion_h
-
 using namespace std;
 
 class Avion {
@@ -25,6 +24,11 @@ public:
     Avion(string nombre, int capacidad) {
         this -> nombre = nombre;
         this -> capacidad = capacidad;
+    }
+    
+    Avion(string nombre) {
+        this -> nombre = nombre;
+        capacidad = 0;
     }
     
     // getters
