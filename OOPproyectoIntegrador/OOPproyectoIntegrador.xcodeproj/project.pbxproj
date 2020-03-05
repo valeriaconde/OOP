@@ -27,6 +27,9 @@
 		8BE28C3B241181C800A94FAA /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		8BE28C42241181D800A94FAA /* aviones.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = aviones.txt; sourceTree = "<group>"; };
 		8BE28C43241181DE00A94FAA /* datos_vuelos.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = datos_vuelos.txt; sourceTree = "<group>"; };
+		8BE28C44241197B400A94FAA /* Vuelo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Vuelo.h; sourceTree = "<group>"; };
+		8BE28C452411997D00A94FAA /* Avion.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Avion.h; sourceTree = "<group>"; };
+		8BE28C462411998800A94FAA /* Itinerario.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Itinerario.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +65,9 @@
 				8BE28C43241181DE00A94FAA /* datos_vuelos.txt */,
 				8BE28C42241181D800A94FAA /* aviones.txt */,
 				8BE28C3B241181C800A94FAA /* main.cpp */,
+				8BE28C44241197B400A94FAA /* Vuelo.h */,
+				8BE28C452411997D00A94FAA /* Avion.h */,
+				8BE28C462411998800A94FAA /* Itinerario.h */,
 			);
 			path = OOPproyectoIntegrador;
 			sourceTree = "<group>";
