@@ -33,13 +33,26 @@ public:
         this -> formato = formato;
     }
     
-    // getters
-    string getHora() {
-        return hora;
+    // getters - GET FECHAS Y HORAS EN INTS
+
+    int getHora() {
+        return stoi(hora.substr(0, 2));
     }
     
-    string getFecha() {
-        return fecha;
+    int getMinutos() {
+        return stoi(hora.substr(3, 2));
+    }
+    
+    int getAnio() {
+        return stoi(fecha.substr(0, 4));
+    }
+    
+    int getMes() {
+        return stoi(fecha.substr(5, 2));
+    }
+    
+    int getDia() {
+        return stoi(fecha.substr(8, 2));
     }
     
     string getDestino() {
@@ -66,6 +79,7 @@ public:
     void setFormato(char formato) {
         this -> formato = formato;
     }
+    
 };
 
 

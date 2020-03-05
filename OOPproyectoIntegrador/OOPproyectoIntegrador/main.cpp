@@ -40,7 +40,9 @@
 #include "Itinerario.h"
 using namespace std;
 
-void getData(vector<Vuelo> arr, int &arrivalsTotales, int &salidasTotales) {
+void getData(vector<Vuelo> arr, int &arrivalsTotales, int &salidasTotales, int &arrVuelosPorHora, vector<int> &arrSalidasPorHora, vector<int> &arrArrivalsPorHora) {
+    
+
     
 }
 
@@ -67,7 +69,11 @@ int main() {
     int pasajer, capacida;
     vector<Avion> arrAviones;
     vector<Vuelo> arrVuelos;
+    vector<int> arrSalidasPorHora;
+    vector<int> arrArrivalsPorHora;
     int arrivalsTotales, salidasTotales;
+    // arreglo [24] con el numero total de salidas, indexado en la hora
+    int arrVuelosPorHora[24];
     
 
     // abre archivos
