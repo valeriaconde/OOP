@@ -34,11 +34,14 @@
 #include <vector>
 #include <string>
 #include <fstream>
+#include <map>
 #include "Vuelo.h"
 #include "Avion.h"
 #include "Itinerario.h"
 using namespace std;
 
+// getData
+//
 void getData(vector<Vuelo> arr, int &arrivalsTotales, int &salidasTotales, vector<int> &arrVuelosPorHora, vector<int> &arrSalidasPorHora, vector<int> &arrArrivalsPorHora) {
     for (int i = 0; i < arr.size(); i++) {
         if (arr[i].getItinerario().getFormato() == 'A') {
@@ -59,15 +62,21 @@ void getData(vector<Vuelo> arr, int &arrivalsTotales, int &salidasTotales, vecto
 // horasMayorSaturacion
 // recibe un arreglo de Vuelos e imprime la hora de cada dia con mayor saturacion
 // contar vuelos por hora,
-void horasMayorSaturacion(vector<Vuelo> arr) {
+void horasMayorSaturacion(vector<Vuelo> &arrVuelos) {
+    
+    map<vector<Vuelo>, int> porDiaPorHora;
     
     // lee el arreglo y sacar los datos necesarios
-    for (int i = 0; i < arr.size(); i++) {
-        
+    for (int i = 0; i < arrVuelos.size(); i++) {
+        porDiaPorHora[arrVuelos[i].getItinerario().getDia()] = arrVuelos[i].getItinerario().getDia();
         
     }
     
     // cout << "DIA " << X << "\n Hora con mayor saturacion: " << Y << endl;
+}
+
+void arrivalsPromedioPorHora(vector<int> arrArrivalsPorHora) {
+    // code
 }
 
 
@@ -111,6 +120,7 @@ int main() {
         arrVuelos.push_back(unVuelo);
     }
     
+    getData(arrVuelos, arrivalsTotales, salidasTotales, arrVuelosPorHora, arrSalidasPorHora, arrArrivalsPorHora);
     
     // menu
     do {
