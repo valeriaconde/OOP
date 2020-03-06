@@ -1,4 +1,3 @@
-//
 //  main.cpp
 //  OOPproyectoIntegrador
 //
@@ -40,9 +39,20 @@
 #include "Itinerario.h"
 using namespace std;
 
-void getData(vector<Vuelo> arr, int &arrivalsTotales, int &salidasTotales, int &arrVuelosPorHora, vector<int> &arrSalidasPorHora, vector<int> &arrArrivalsPorHora) {
+void getData(vector<Vuelo> arr, int &arrivalsTotales, int &salidasTotales, vector<int> &arrVuelosPorHora, vector<int> &arrSalidasPorHora, vector<int> &arrArrivalsPorHora) {
+    for (int i = 0; i < arr.size(); i++) {
+        if (arr[i].getItinerario().getFormato() == 'A') {
+            arrivalsTotales++;
+            arrArrivalsPorHora[arr[i].getItinerario().getHora()]++;
+        } else if (arr[i].getItinerario().getFormato() == 'S') {
+            salidasTotales++;
+            arrSalidasPorHora[arr[i].getItinerario().getHora()]++;
+        }
+    }
     
-
+    for (int i = 0; i < 24; i++) {
+        arrVuelosPorHora[i] = arrArrivalsPorHora[i] + arrSalidasPorHora[i];
+    }
     
 }
 
@@ -69,11 +79,11 @@ int main() {
     int pasajer, capacida;
     vector<Avion> arrAviones;
     vector<Vuelo> arrVuelos;
-    vector<int> arrSalidasPorHora;
-    vector<int> arrArrivalsPorHora;
-    int arrivalsTotales, salidasTotales;
+    vector<int> arrSalidasPorHora(24,0);
+    vector<int> arrArrivalsPorHora(24,0);
+    int arrivalsTotales = 0, salidasTotales = 0;
     // arreglo [24] con el numero total de salidas, indexado en la hora
-    int arrVuelosPorHora[24];
+    vector<int> arrVuelosPorHora(24,0);
     
 
     // abre archivos
@@ -100,6 +110,7 @@ int main() {
         // Agrega unVuelo al arreglo de vuelos
         arrVuelos.push_back(unVuelo);
     }
+    
     
     // menu
     do {
