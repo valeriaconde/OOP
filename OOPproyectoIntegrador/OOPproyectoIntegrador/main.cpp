@@ -50,11 +50,27 @@ void getVuelosPorDia(vector<Vuelo> &arr, map<string, vector<Vuelo>> &vuelosPorDi
     }
 }
 
+void getData(vector<Vuelo> arr, int &arrivalsTotales, int &salidasTotales, vector<int> &arrVuelosPorHora, vector<int> &arrSalidasPorHora, vector<int> &arrArrivalsPorHora) {
+    
+     for (int i = 0; i < arr.size(); i++) {
+         if (arr[i].getItinerario().getFormato() == 'A') {
+            arrivalsTotales++;
+            arrArrivalsPorHora[arr[i].getItinerario().getHora()]++;
+        } else if (arr[i].getItinerario().getFormato() == 'S') {
+            salidasTotales++;
+            arrSalidasPorHora[arr[i].getItinerario().getHora()]++;
+        }
+    }
+    
+    for (int i = 0; i < 24; i++) {
+        arrVuelosPorHora[i] = arrArrivalsPorHora[i] + arrSalidasPorHora[i];
+    }
+}
+
 // horasMayorSaturacion
 // recibe un arreglo de Vuelos e imprime la hora de cada dia con mayor saturacion
 // contar vuelos por hora,
 void horasMayorSaturacion(vector<Vuelo> &arrVuelos, map<string, vector<Vuelo>> &vuelosPorDia) {
-    
     // por cada dia mapear 24 horas
     for (auto it : vuelosPorDia) {
         string key = it.first;
@@ -62,11 +78,9 @@ void horasMayorSaturacion(vector<Vuelo> &arrVuelos, map<string, vector<Vuelo>> &
         vector<int> arrVuelosPorHora(24, 0);
         int maxi = 0;
         int hora = 0;
-        
         for (int i = 0; i < values.size(); i++) {
             arrVuelosPorHora[values[i].getItinerario().getHora()]++;
         }
-        
         for (int i = 0; i < 24; i++) {
             if (arrVuelosPorHora[i] > maxi) {
                 maxi = arrVuelosPorHora[i];
@@ -77,10 +91,27 @@ void horasMayorSaturacion(vector<Vuelo> &arrVuelos, map<string, vector<Vuelo>> &
     }
 }
 
+void arrivalsPromedioPorHora() {
+    
 
-void arrivalsPromedioPorHora(vector<int> arrArrivalsPorHora) {
-    // code
+
+
 }
+
+
+void llegadasSalidasPorAerolinea(vector<Vuelo> &arrVuelos) {
+    map<string, int> mapAerolineas;
+    for(int i = 0; i < arrVuelos.size(); i++){
+            string aerolinea = arrVuelos[i].getAerolinea();
+            mapAerolineas[aerolinea]++;
+        }
+    for (auto it : mapAerolineas) {
+        string key = it.first;
+        int value = it.second;
+        cout << key << ": " << value << " vuelos" << endl;
+    }
+}
+
 
 
 int main() {
@@ -91,17 +122,15 @@ int main() {
     string fech, hor, vuel, aeroline, destin, avio, tipoAvio;
     char format, resp;
     int pasajer, capacida;
+    int arrivalsTotales, salidasTotales;
     vector<Avion> arrAviones;
     vector<Vuelo> arrVuelos;
     vector<int> arrSalidasPorHora(24,0);
     vector<int> arrArrivalsPorHora(24,0);
-    int arrivalsTotales = 0, salidasTotales = 0;
-    // arreglo [24] con el numero total de salidas, indexado en la hora
     vector<int> arrVuelosPorHora(24,0);
     map<string, vector<Vuelo>> vuelosPorDia;
     
     
-
     // abre archivos
     datos.open("datos_vuelos.txt");
     capacidades.open("aviones.txt");
@@ -129,16 +158,19 @@ int main() {
         
     // obtiene mapa de vuelos por dia
     getVuelosPorDia(arrVuelos, vuelosPorDia);
+    
+    // obtiene vuelos por horas
+    getData(arrVuelos, arrivalsTotales, salidasTotales, arrVuelosPorHora, arrSalidasPorHora, arrArrivalsPorHora);
 
     // menu
     do {
         cout << endl;
         cout << "Que desea ver" << endl;
         cout << "1. Hora de cada dia con mayor saturacion" << endl;
-        cout << "2. Cantidad de llegadas promedio por hora" << endl;
-        cout << "3. Cantidad de salidas promedio por hora" << endl;
-        cout << "4. Cantidad de llegadas y salidas por aerolinea" << endl;
-        cout << "5. Cantidad de pasajeros atendidos por dia" << endl;
+        cout << "2. Llegadas promedio por hora" << endl;
+        cout << "3. Salidas promedio por hora" << endl;
+        cout << "4. Llegadas y salidas por aerolinea" << endl;
+        cout << "5. Pasajeros atendidos por dia" << endl;
         cout << "6. Porcentaje promedio de capacidad usada en los aviones" << endl;
         cout << "7. " << endl;
         cout << "0. SALIR" << endl;
@@ -158,6 +190,7 @@ int main() {
                 break;
                 
             case '4':
+                llegadasSalidasPorAerolinea(arrVuelos);
                 break;
                 
             case '5':
