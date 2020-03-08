@@ -62,8 +62,8 @@
 		8BE28C3A241181C800A94FAA /* OOPproyectoIntegrador */ = {
 			isa = PBXGroup;
 			children = (
-				8BE28C43241181DE00A94FAA /* datos_vuelos.txt */,
 				8BE28C42241181D800A94FAA /* aviones.txt */,
+				8BE28C43241181DE00A94FAA /* datos_vuelos.txt */,
 				8BE28C3B241181C800A94FAA /* main.cpp */,
 				8BE28C44241197B400A94FAA /* Vuelo.h */,
 				8BE28C452411997D00A94FAA /* Avion.h */,

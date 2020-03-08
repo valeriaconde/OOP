@@ -34,6 +34,9 @@ public:
     }
     
     // getters - GET FECHAS Y HORAS EN INTS
+    string getFecha() {
+        return fecha;
+    }
 
     int getHora() {
         return stoi(hora.substr(0, 2));

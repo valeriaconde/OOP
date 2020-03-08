@@ -40,40 +40,43 @@
 #include "Itinerario.h"
 using namespace std;
 
-// getData
-//
-void getData(vector<Vuelo> arr, int &arrivalsTotales, int &salidasTotales, vector<int> &arrVuelosPorHora, vector<int> &arrSalidasPorHora, vector<int> &arrArrivalsPorHora) {
-    for (int i = 0; i < arr.size(); i++) {
-        if (arr[i].getItinerario().getFormato() == 'A') {
-            arrivalsTotales++;
-            arrArrivalsPorHora[arr[i].getItinerario().getHora()]++;
-        } else if (arr[i].getItinerario().getFormato() == 'S') {
-            salidasTotales++;
-            arrSalidasPorHora[arr[i].getItinerario().getHora()]++;
-        }
+// MAP
+// 23/02/2020 -> [Vuelo1, Vuelo2, Vuelo3]
+// 24/02/2020 -> [Vuelo5, Vuelo7, Vuelo 6]
+void getVuelosPorDia(vector<Vuelo> &arr, map<string, vector<Vuelo>> &vuelosPorDia) {
+    for(int i = 0; i < arr.size(); i++){
+        string fecha = arr[i].getItinerario().getFecha();
+        vuelosPorDia[fecha].push_back(arr[i]);
     }
-    
-    for (int i = 0; i < 24; i++) {
-        arrVuelosPorHora[i] = arrArrivalsPorHora[i] + arrSalidasPorHora[i];
-    }
-    
 }
 
 // horasMayorSaturacion
 // recibe un arreglo de Vuelos e imprime la hora de cada dia con mayor saturacion
 // contar vuelos por hora,
-void horasMayorSaturacion(vector<Vuelo> &arrVuelos) {
+void horasMayorSaturacion(vector<Vuelo> &arrVuelos, map<string, vector<Vuelo>> &vuelosPorDia) {
     
-    map<vector<Vuelo>, int> porDiaPorHora;
-    
-    // lee el arreglo y sacar los datos necesarios
-    for (int i = 0; i < arrVuelos.size(); i++) {
-        porDiaPorHora[arrVuelos[i].getItinerario().getDia()] = arrVuelos[i].getItinerario().getDia();
+    // por cada dia mapear 24 horas
+    for (auto it : vuelosPorDia) {
+        string key = it.first;
+        vector<Vuelo> values = it.second;
+        vector<int> arrVuelosPorHora(24, 0);
+        int maxi = 0;
+        int hora = 0;
         
+        for (int i = 0; i < values.size(); i++) {
+            arrVuelosPorHora[values[i].getItinerario().getHora()]++;
+        }
+        
+        for (int i = 0; i < 24; i++) {
+            if (arrVuelosPorHora[i] > maxi) {
+                maxi = arrVuelosPorHora[i];
+                hora = i;
+            }
+        }
+        cout << "La hora mas saturada en el dia " << key << " fueron las " << hora << " horas." << endl;
     }
-    
-    // cout << "DIA " << X << "\n Hora con mayor saturacion: " << Y << endl;
 }
+
 
 void arrivalsPromedioPorHora(vector<int> arrArrivalsPorHora) {
     // code
@@ -81,6 +84,8 @@ void arrivalsPromedioPorHora(vector<int> arrArrivalsPorHora) {
 
 
 int main() {
+    // BORRAR PARA ENTREGAR //
+    string dummy;
     
     ifstream datos, capacidades;
     string fech, hor, vuel, aeroline, destin, avio, tipoAvio;
@@ -93,6 +98,8 @@ int main() {
     int arrivalsTotales = 0, salidasTotales = 0;
     // arreglo [24] con el numero total de salidas, indexado en la hora
     vector<int> arrVuelosPorHora(24,0);
+    map<string, vector<Vuelo>> vuelosPorDia;
+    
     
 
     // abre archivos
@@ -109,7 +116,7 @@ int main() {
     }
     
     // lee archivo datos
-    while (datos >> fech >> hor >> vuel >> format >> aeroline >> destin >> avio >> pasajer) {
+    while (datos >> fech >> hor >> vuel >> format >> aeroline >> destin >> avio >> pasajer >> dummy) {
         // Crea objeto itinerario
         Itinerario itinerario(hor, fech, destin, format);
         
@@ -119,11 +126,13 @@ int main() {
         // Agrega unVuelo al arreglo de vuelos
         arrVuelos.push_back(unVuelo);
     }
-    
-    getData(arrVuelos, arrivalsTotales, salidasTotales, arrVuelosPorHora, arrSalidasPorHora, arrArrivalsPorHora);
-    
+        
+    // obtiene mapa de vuelos por dia
+    getVuelosPorDia(arrVuelos, vuelosPorDia);
+
     // menu
     do {
+        cout << endl;
         cout << "Que desea ver" << endl;
         cout << "1. Hora de cada dia con mayor saturacion" << endl;
         cout << "2. Cantidad de llegadas promedio por hora" << endl;
@@ -139,6 +148,7 @@ int main() {
         
         switch (resp) {
             case '1':
+                horasMayorSaturacion(arrVuelos, vuelosPorDia);
                 break;
                 
             case '2':
