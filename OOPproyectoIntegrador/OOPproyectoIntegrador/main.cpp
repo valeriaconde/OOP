@@ -150,6 +150,14 @@ void usoDeAviones(vector<Vuelo> &arrVuelos, vector<Avion> arrAviones) {
     }
 }
 
+void vuelosPorHoraMayorCantPasajeros(vector<int> &arrVuelos) {
+    
+    for(int i = 0; i < arrVuelos.size(); i++) {
+        
+    }
+    
+}
+
 int main() {
     // BORRAR PARA ENTREGAR //
     string dummy;
@@ -201,15 +209,14 @@ int main() {
     // menu
     do {
         cout << endl;
-        cout << "Que desea ver" << endl;
-        cout << "1. Hora de cada dia con mayor saturacion" << endl;
+        cout << "Que desea ver?" << endl;
+        cout << "1. Hora de cada dia con mayor saturacion de vuelos" << endl;
         cout << "2. Llegadas promedio por hora" << endl;
         cout << "3. Salidas promedio por hora" << endl;
         cout << "4. Llegadas y salidas por aerolinea" << endl;
         cout << "5. Pasajeros atendidos por dia" << endl;
         cout << "6. Porcentaje promedio de capacidad usada en los aviones" << endl;
-        cout << "7. Pasajeros por aeroliea" << endl;
-        cout << "8. Hora con mayor cantidad de pasajeros" << endl;
+        cout << "7. Vuelos por hora con mayor cnantidad de pasajeros" << endl;
         cout << "0. SALIR" << endl;
         cout << endl;
 
