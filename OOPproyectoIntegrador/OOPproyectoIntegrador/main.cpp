@@ -112,6 +112,19 @@ void llegadasSalidasPorAerolinea(vector<Vuelo> &arrVuelos) {
     }
 }
 
+void pasajerosPorDia(vector<Vuelo> &arrVuelos) {
+    map<string, int> pasajerosPorDia;
+    for (int i = 0; i < arrVuelos.size(); i++) {
+        string fecha = arrVuelos[i].getItinerario().getFecha();
+        pasajerosPorDia[fecha] += arrVuelos[i].getNumPasajeros();
+    }
+
+    for (auto it: pasajerosPorDia) {
+        string key = it.first;
+        int value = it.second;
+        cout << "El dia " << key << " se atendieron " << value << " pasajeros." << endl;
+    }
+}
 
 
 int main() {
@@ -194,6 +207,7 @@ int main() {
                 break;
                 
             case '5':
+                pasajerosPorDia(arrVuelos);
                 break;
                 
             case '6':
