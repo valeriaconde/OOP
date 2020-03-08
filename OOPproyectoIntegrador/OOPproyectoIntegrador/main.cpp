@@ -119,13 +119,36 @@ void pasajerosPorDia(vector<Vuelo> &arrVuelos) {
         pasajerosPorDia[fecha] += arrVuelos[i].getNumPasajeros();
     }
 
-    for (auto it: pasajerosPorDia) {
+    for (auto it : pasajerosPorDia) {
         string key = it.first;
         int value = it.second;
         cout << "El dia " << key << " se atendieron " << value << " pasajeros." << endl;
     }
 }
 
+void usoDeAviones(vector<Vuelo> &arrVuelos, vector<Avion> arrAviones) {
+    map<string, vector<int> > mapPasajeros;
+    // cuenta el numero de vuelos para un avion
+    for (int i = 0; i < arrVuelos.size(); i++) {
+        string avion = arrVuelos[i].getAvion().getNombre();
+        mapPasajeros[avion].push_back(arrVuelos[i].getNumPasajeros());
+    }
+    for (auto it : mapPasajeros) {
+        string key = it.first;
+        vector<int> pasajeros = it.second;
+        int vuelosDeEsteAvion = pasajeros.size();
+        int contPasajeros = 0;
+        for(int i = 0; i < pasajeros.size(); i++){
+            contPasajeros += pasajeros[i];
+        }
+        double promedio = contPasajeros / vuelosDeEsteAvion * 1.0;
+        int capacidad;
+        for (int i = 0; i < arrAviones.size(); i++) {
+            if (key == arrAviones[i].getNombre()) capacidad = arrAviones[i].getCapacidad();
+        }
+        cout << "El avion " << key << " tiene un porcentaje promedio de capacidad usada de " << promedio / capacidad * 100.0 << "%" << endl;
+    }
+}
 
 int main() {
     // BORRAR PARA ENTREGAR //
@@ -185,7 +208,8 @@ int main() {
         cout << "4. Llegadas y salidas por aerolinea" << endl;
         cout << "5. Pasajeros atendidos por dia" << endl;
         cout << "6. Porcentaje promedio de capacidad usada en los aviones" << endl;
-        cout << "7. " << endl;
+        cout << "7. Pasajeros por aeroliea" << endl;
+        cout << "8. Hora con mayor cantidad de pasajeros" << endl;
         cout << "0. SALIR" << endl;
         cout << endl;
 
@@ -211,8 +235,9 @@ int main() {
                 break;
                 
             case '6':
+                usoDeAviones(arrVuelos, arrAviones);
                 break;
-                
+
             case '7':
                 break;
                 
