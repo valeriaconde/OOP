@@ -37,6 +37,10 @@ public:
     string getFecha() {
         return fecha;
     }
+    
+    string getHorario() {
+        return hora;
+    }
 
     int getHora() {
         return stoi(hora.substr(0, 2));

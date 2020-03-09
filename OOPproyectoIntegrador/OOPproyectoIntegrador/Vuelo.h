@@ -67,6 +67,16 @@ public:
     void setNumPasajeros(int numPasajeros) {
         this -> numPasajeros = numPasajeros;
     }
+    
+    void show() {
+        cout << "Fecha: " << getItinerario().getFecha();
+        cout << " Hora: " << getItinerario().getHorario();
+        cout << " Destino: " << getItinerario().getDestino();
+        cout << " Formato: " << getItinerario().getFormato();
+        cout << " Avion: " << getAvion().getNombre();
+        cout << " Aerolinea: " << aerolinea;
+        cout << " Numero de pasajeros: " << numPasajeros << endl;
+    }
 };
 
 #endif /* Vuelo_h */
