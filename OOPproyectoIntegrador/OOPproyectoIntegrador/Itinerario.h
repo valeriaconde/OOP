@@ -86,7 +86,6 @@ public:
     void setFormato(char formato) {
         this -> formato = formato;
     }
-    
 };
 
 
