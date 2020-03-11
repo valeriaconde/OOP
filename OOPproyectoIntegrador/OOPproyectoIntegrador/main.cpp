@@ -103,6 +103,7 @@ void llegadasSalidasPorAerolinea(vector<Vuelo> &arrVuelos) {
         int value = it.second;
         cout << key << ": " << value << " vuelos" << endl;
     }
+    cout << endl;
     //Imprime las salidas por aerolinea
     cout << "Salidas por aerolinea:" << endl;
     for (auto it : mapSalidas) {
@@ -182,8 +183,7 @@ void vuelosPorHoraMayorCantPasajeros(vector<Vuelo> &arrVuelos) {
 }
 
 int main() {
-    // BORRAR PARA ENTREGAR //
-    string dummy;
+    
     
     ifstream datos, capacidades;
     string fech, hor, vuel, aeroline, destin, avio, tipoAvio;
@@ -212,7 +212,7 @@ int main() {
     }
     
     // lee archivo datos
-    while (datos >> fech >> hor >> vuel >> format >> aeroline >> destin >> avio >> pasajer >> dummy) {
+    while (datos >> fech >> hor >> vuel >> format >> aeroline >> destin >> avio >> pasajer) {
         // Crea objeto itinerario
         Itinerario itinerario(hor, fech, destin, format);
         
