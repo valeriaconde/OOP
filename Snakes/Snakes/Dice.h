@@ -15,13 +15,13 @@ using namespace std;
 #include <time.h>
 #include <stdlib.h>
 
-class Dado {
+class Dice {
 public:
-    Dado() {
+    Dice() {
         srand(time(0));
     }
     
-    getTiro() {
+    int getRoll() {
         return  (rand() % 6) + 1;
     }
 };

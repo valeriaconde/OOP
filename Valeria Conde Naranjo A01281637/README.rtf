@@ -1,0 +1,31 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2511
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fswiss\fcharset0 Helvetica-Bold;\f2\fnil\fcharset0 HelveticaNeue;
+}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 Valeria Conde A01281637\
+\
+
+\f1\b Streaming service
+\f0\b0 \
+\
+\pard\pardeftab560\slleading20\partightenfactor0
+
+\f2 \cf0 \
+Hoy en dia existen diversas plataformas que ofrecen servicio de streaming en linea de videos, los cuales son categorizados en peliculas y series. Dicho problema permite utilizar programacion orientada a objetos, pues los conceptos de herencia y polimorfismo facilitan dicha categorizacion, al tener atributos en comun y ademas sus propios unicos. Para resolver dicha problematica, este programa utiliza abtraccion, encapsulamiento, sobrecarga de operadores, herencia y polimorfismo para identificar y generar reportes con la informacion con que se cuenta. Dicho acercamiento es el mas optimo considerando la base de datos con la que se desea trabajar. Utilizar un acercamiento diferente no seria lo ideal porque se desperdiciarian los conceptos que el dise\'f1o orientado a objetos provee.\
+\
+El programa streamingService es un simulador de un servicio de streaming, el cual es capaz de leer archivos de tipo csv que contengan una base de datos con peliculas, series y episodios, con sus respectivos datos de titulo, numero de identificacion, calificacion, temporada, etc., y genera reportes a peticion.\
+\
+La carpeta de codigo fuente contiene los archivos Video.h, el cual crea una clase que sera la clase base del programa, que contiene los atributos que tienen en comun las clases de Serie.h y Movie.h. Serie y Movie son clases que heredan de la clase Video, y cada una tiene sus respectivos atributos unicos.\
+\
+Las clases Series.h y Movies.h contienen un arreglo de apuntadores y los metodos que se llaman en el main del programa, para generar lo que se requiera segun el menu de opciones.\
+\
+El archivo main.cpp contiene el codigo que se ejecuta cuando se corre el programa, el cual se encarga de leer los archivos de Peliculas, Series y Episodios en formato .csv y organizar la informacion para mostrar un menu de opciones al usuario en el que pueda requerir reportes sobre las peliculas, series y episodios de las series disponibles, asi como agregar propias peliculas, series y episodios a la base de datos. Ademas, el programa utiliza sobrecarga de operadores para agregar episodios a una serie.\
+\
+Los archivos incluidos en la carpeta de codigo fuente con terminacion .csv son los que originalmente se usaron para el programa y pueden usarse para correr el programa facilmente en un compilador. Para su correcto funcionamiento, los archivos .csv deben estar en la misma carpeta que el codigo.\
+\
+Existen diversos casos que podrian hacer que el programa dejara de funcionar, por ejemplo si se utilizaran archivos de otro tipo o si se deseara leer archivos con la informacion en otro orden, pues los constructores de las clases asignan ciertos tipos de datos a lo que leen del archivo. Otro caso ser\'eda que sucediera un overflow si se utilizara mucha informaci\'f3n, como puede suceder cuando se utilizan arreglos. \
+}

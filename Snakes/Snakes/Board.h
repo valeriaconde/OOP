@@ -9,7 +9,6 @@
 
 class Board {
 private:
-    const int initialTile = 1;
     int totalTiles = 30;
     
     // Tile array for the board
@@ -38,16 +37,18 @@ public:
         
         // Random shuffles all the tiles in the board
         srand(unsigned(time(0)));
-        random_shuffle(tiles.begin(), tiles.end(), seed);
-        
-        for(int i =0; i < tiles.size(); i++) cout << tiles[i] << endl;
-        cout << tiles.size() << endl;
+        do {
+            random_shuffle(tiles.begin(), tiles.end(), seed);
+        } while (tiles[totalTiles - 1] == 'S');
+
     }
     
-    // 
+    // Updates current tile with dice roll
     int newTile(int currentTile, int diceRoll) {
         currentTile += diceRoll;
         if(currentTile > 29) currentTile = 29;
+        
+        cout << tiles[currentTile] << " ";
         
         if(tiles[currentTile] == 'L') currentTile = min(currentTile + 3, 29);
         else if(tiles[currentTile] == 'S') currentTile = max(0, currentTile - 3);
@@ -56,10 +57,15 @@ public:
     }
     
     
+    // Getters
+    vector<char> getTiles() {
+        return tiles;
+    }
     
-    
-    
-    
+    // Setters
+    void setTile(vector<char> tiles) {
+        this -> tiles = tiles;
+    }
     
     
     

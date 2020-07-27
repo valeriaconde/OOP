@@ -13,26 +13,50 @@ class Player {
 private:
     int currentTile;
     int playerNumber;
-    bool won;
+    bool win;
     
 public:
     // CONSTRUCTORS
     
     // Empty constructor
     Player() {
-        currentTile = 1;
+        currentTile = 0;
         playerNumber = 1;
-        won = 0;
+        win = 0;
     }
     
     // Constructor with parameter for player number
     Player(int playerNumber) {
-        currentTile = 1;
+        currentTile = 0;
         this -> playerNumber = playerNumber;
-        won = 0;
+        win = 0;
     }
     
+    // Getters
+    int getCurrentTile() {
+        return currentTile;
+    }
     
+    int getPlayerNumber() {
+        return playerNumber;
+    }
+    
+    int getStatus() {
+        return win;
+    }
+    
+    // Setters
+    void setCurrentTile(int currentTile) {
+        this-> currentTile = currentTile;
+    }
+    
+    void setPlayerNumber(int playerNumber) {
+        this-> playerNumber = playerNumber;
+    }
+    
+    void setStatus(bool win) {
+        this-> win = win;
+    }
     
 };
 
